@@ -24,9 +24,35 @@ qanda = {"How many Oympic gold medals has Lisa Carrington won?\n" : 8,
          "d) Victoria University\n" : "c"
          }
 
+# This creates a score to keep track of how many questions the user has gotten
+# right
+score = 0
 
+# This quizes the user and tests if their answer matches the correct answer
 for question, answer in qanda.items():
     user_answer = input(question)
-    if answer is int :
+    while user_answer.type(str) == False
+        print("Your answer must only include letters or numbers")
+        user_answer = input(question)
+    try:
         if int(answer) == int(user_answer):
+            score += 1
+    except:
+        if answer == user_answer.lower() :
+            score += 1 
+
+print("You have finished the quiz. Well Done!")
+print(f"Your score is {score}/10")
+
+skill = ""
+
+if score > 8 :
+    skill = "excellent"
+elif score > 5 :
+    skill = "great"
+elif score > 3 :
+    skill = "okay"
+else :
+    skill = "bad"
         
+print(f"You did {skill}")
