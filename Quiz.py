@@ -3,42 +3,49 @@ By Abigail Lavin - Created on 20/4/2026'''
 
 # This code creates a user friendly message to introduce the quiz.
 print("This is a quiz on New Zealand sports star, Lisa Carrignton")
-print("The quiz will have a combination of multi-choice and short answer questions.")
+print("The quiz will have a combination of multi-choice and short answer"
+      " questions.")
 
 # This code creates 10 questions and answers for the quiz. 
 qanda = {"How many Oympic gold medals has Lisa Carrington won?\n" : 8,
          "What is the name of Lisa Carringon's dog?\n"
          "a) Max, b) Jack, c) Colin, d) Luna\n" : "a",
          "In what year did Lisa Carrington become a Dame?\n" : 2022,
-         "In what city's Olympics did Lisa Carrington win her first gold medal\n"
-         : "london",
-         "True or False, Lisa Carrington has broken multiple kayaking records.\n" : "true",
+         "True or False, Lisa Carrington won her first Olympic Gold medal in"
+         "Rio De Janeiro"
+         "True or False, Lisa Carrington has broken multiple kayaking records."
+         "\n" : "true",
          "What date is Lisa Carrington's birthday?\n"
-         "a) 12th January, b) 23rd June, c) 26th November, d) 20th October\n" : "d",
+         "a) 12th January, b) 23rd June, c) 26th November, d) 20th October\n" 
+         : "d",
          "How tall is Lisa Carrington? (In metres to 1dp)\n" : 1.7,
-         "What city was Lisa Carrington born in?\n" : "tauranga",
-         "True or False, Lisa Carrington is NZ's second most decorated olympian.\n" 
+         "What city was Lisa Carrington born in?\n a) Wellington, b) Tauranga,"
+         " c) Auckland, d) Christchurch\n" : "b",
+         "True or False, Lisa Carrington is NZ's second most decorated olympian"
+         ".\n" 
          : "false",
-         "What University did Lisa Carrington attend while establishing her canoeing career?"
-         "/na) Univeristy of Auckland, b) University of Waikato, c) Massey University, "
-         "d) Victoria University\n" : "c"
+         "What University did Lisa Carrington attend while establishing her "
+         "canoeing career?"
+         "/na) Univeristy of Auckland, b) University of Waikato, "
+         "c) Massey University, d) Victoria University\n" : "c"
          }
 
-# This creates a score to keep track of how many questions the user has gotten
-# right.
+# This creates a score to keep track of how many questions the user 
+# has gotten right.
 score = 0
 
 trueorfalse = ["true", "false"]
 multichoice = ["a", "b", "c", "d"]
 
-# This quizes the user and tests if their answer matches the correct answer.
+# This quizes the user and tests if their answer matches the correct
+# answer.
 for question, answer in qanda.items():
     user_answer = str(input(question))
 
 # This tests the answers for true or false questions.  
     if answer in trueorfalse :
         while user_answer.lower() not in trueorfalse :
-            print("Your answer must be true or false)")
+            print("Your answer must be true or false")
         if user_answer.lower() == answer :
             score += 1
 
@@ -51,12 +58,16 @@ for question, answer in qanda.items():
 
 # This tests the answers of number questions.
     elif type(answer) is (int or float) :
-        while type(user_answer) is not (int or float) :
-            print("Your answer must be a number.")
-        while user_answer < 0 :
-            print("Your answer must be bigger than 0.")
-        if user_answer.lower() == answer :
-            score += 1
+        work = "no"
+        while work == "no":
+            try :
+                if int(user_answer) == answer :
+                    score += 1
+                work = "yes"
+            except ValueError:
+                print("Your answer must be a number")
+                user_answer = str(input(question))
+
 
 
 
