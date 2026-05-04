@@ -25,21 +25,40 @@ qanda = {"How many Oympic gold medals has Lisa Carrington won?\n" : 8,
          }
 
 # This creates a score to keep track of how many questions the user has gotten
-# right
+# right.
 score = 0
 
-# This quizes the user and tests if their answer matches the correct answer
+trueorfalse = ["true", "false"]
+multichoice = ["a", "b", "c", "d"]
+
+# This quizes the user and tests if their answer matches the correct answer.
 for question, answer in qanda.items():
-    user_answer = input(question)
-    while user_answer.type(str) == False
-        print("Your answer must only include letters or numbers")
-        user_answer = input(question)
-    try:
-        if int(answer) == int(user_answer):
+    user_answer = str(input(question))
+
+# This tests the answers for true or false questions.  
+    if answer in trueorfalse :
+        while user_answer.lower() not in trueorfalse :
+            print("Your answer must be true or false)")
+        if user_answer.lower() == answer :
             score += 1
-    except:
-        if answer == user_answer.lower() :
-            score += 1 
+
+# This tests the answers for multi-choice questions. 
+    elif answer in multichoice :
+        while user_answer.lower() not in multichoice :
+            print("Your answer must be one of the multichoice options.")
+        if user_answer.lower() == answer :
+            score += 1
+
+# This tests the answers of number questions.
+    elif type(answer) is (int or float) :
+        while type(user_answer) is not (int or float) :
+            print("Your answer must be a number.")
+        while user_answer < 0 :
+            print("Your answer must be bigger than 0.")
+        if user_answer.lower() == answer :
+            score += 1
+
+
 
 print("You have finished the quiz. Well Done!")
 print(f"Your score is {score}/10")
