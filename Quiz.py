@@ -39,46 +39,49 @@ multichoice = ["a", "b", "c", "d"]
 for question, answer in qanda.items():
     user_answer = str(input(question))
 
-# This tests the answers for true or false questions.  
+    # This tests the answers for true or false questions.  
     if answer in trueorfalse :
         while user_answer.lower() not in trueorfalse :
             print("Your answer must be True or False")
+            user_answer = str(input(question))
         if user_answer.lower() == answer :
             score += 1
 
-# This tests the answers for multi-choice questions. 
+    # This tests the answers for multi-choice questions. 
     elif answer in multichoice :
         while user_answer.lower() not in multichoice :
             print("Your answer must be one of the multichoice options.")
+            user_answer = str(input(question))
         if user_answer.lower() == answer :
             score += 1
 
-# This tests the answers of number questions.
+    # This tests the answers of number questions.
     elif type(answer) is (int or float) :
         work = "no"
         while work == "no":           
             try :
+                
+                # This tests the user's answer to make sure their 
+                # answer's are not too large or small.
                 user_answer = int(user_answer)
                 if user_answer <= 0 :
                     print("Your number must be bigger than 0")
                     user_answer = str(input(question))
-                elif answer <= 5 :
-                    if user_answer >= 10 :
-                        print("Your answer must be lower than 10")
-                        user_answer = str(input(question))
-                elif answer <= 10 :
-                    if user_answer >= 20 :
-                        ("Your answer must be lower than 20")
-                        user_answer = str(input(question))
-                elif answer <= 2500:
-                    if user_answer >= 2026 :
-                        print("Your answer must be lower than 2026")
-                        user_answer = str(input(question))
-                else :
-                    if int(user_answer) == answer :
+                elif answer <= 5 and user_answer >= 10 :
+                    print("Your answer must be lower than 10")
+                    user_answer = str(input(question))
+                elif answer <= 10 and user_answer >= 20 :
+                    print("Your answer must be lower than 20")
+                    user_answer = str(input(question))
+                elif answer <= 2500 and user_answer >= 2026 :
+                    print("Your answer must be lower than 2026")
+                    user_answer = str(input(question))
+                elif int(user_answer) == answer :
+                        print("correct")
                         score += 1
+                        work = "yes"
                     work = "yes"
-            except ValueError:
+            except :
                 print("Your answer must be a number")
                 user_answer = str(input(question))
 
