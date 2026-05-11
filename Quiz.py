@@ -23,8 +23,8 @@ qanda = {"How many Oympic gold medals has Lisa Carrington won?\n" : 8,
          "True or False, Lisa Carrington is NZ's second most decorated olympian"
          ".\n" : "false",
          "What University did Lisa Carrington attend while establishing her "
-         "canoeing career?\na) Univeristy of Auckland, b) University of Waikato, "
-         "c) Massey University, d) Victoria University\n" : "c"
+         "canoeing career?\na) Univeristy of Auckland, b) University of Waikato"
+         ", c) Massey University, d) Victoria University\n" : "c"
          }
 
 # This creates a score to keep track of how many questions the user 
@@ -73,7 +73,10 @@ for question, answer in qanda.items():
                 elif answer <= 10 and user_answer >= 20 :
                     print("Your answer must be lower than 20")
                     user_answer = str(input(question))
-                elif answer <= 200 and user_answer > 400 :
+                elif answer <= 200 and user_answer > 350 :
+                    print("Your answer must be lower than 400")
+                    user_answer = str(input(question))
+                elif answer <= 200 and user_answer > 350 :
                     print("Your answer must be lower than 400")
                     user_answer = str(input(question))
                 elif answer <= 2500 and user_answer >= 2026 :
@@ -83,33 +86,31 @@ for question, answer in qanda.items():
                     print("Your answer must be bigger than 1990")
                     user_answer = str(input(question))
                 elif int(user_answer) == answer :
-                        print("correct")
                         score += 1
                         work = "yes"
                 else:
                     work = "yes"
             except :
-                if type(user_answer) == float :
-                    print("Your answer must not include decimals.")
-                else:
+                try :
+                    float(user_answer)
+                    print("Your answer must not contain decimals.")
+                    user_answer = str(input(question))
+                except :
                     print("Your answer must be a number")
-                user_answer = str(input(question))
+                    user_answer = str(input(question))
 
-
-
-
-print("You have finished the quiz. Well Done!")
-print(f"Your score is {score}/10")
-
-
-
-if score > 8 :
-    skill = "excellent"
+# This assigns a skill to the user depending on what their score is.
+if score > 7 :
+    skill = "excellent!"
 elif score > 5 :
-    skill = "great"
+    skill = "great!"
 elif score > 3 :
-    skill = "okay"
+    skill = "okay."
 else :
-    skill = "bad"
-        
+    skill = "bad."
+
+# This prints a user friendly message to inform the user of their score
+# and corresponding skill level.
+print("You have finished the quiz. Well Done!")
+print(f"Your score is {score}/10.")        
 print(f"You did {skill}")
