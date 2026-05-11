@@ -17,7 +17,7 @@ qanda = {"How many Oympic gold medals has Lisa Carrington won?\n" : 8,
          "\n" : "true",
          "What date is Lisa Carrington's birthday?\na) 12th January, "
          "b) 23rd June, c) 26th November, d) 20th October\n" : "d",
-         "How tall is Lisa Carrington? (In metres to 1dp)\n" : 1.7,
+         "How tall is Lisa Carrington? (In centimetres)\n" : 168,
          "What city was Lisa Carrington born in?\n a) Wellington, b) Tauranga,"
          " c) Auckland, d) Christchurch\n" : "b",
          "True or False, Lisa Carrington is NZ's second most decorated olympian"
@@ -56,7 +56,7 @@ for question, answer in qanda.items():
             score += 1
 
     # This tests the answers of number questions.
-    elif type(answer) is (int or float) :
+    elif type(answer) is int :
         work = "no"
         while work == "no":           
             try :
@@ -73,16 +73,26 @@ for question, answer in qanda.items():
                 elif answer <= 10 and user_answer >= 20 :
                     print("Your answer must be lower than 20")
                     user_answer = str(input(question))
+                elif answer <= 200 and user_answer > 400 :
+                    print("Your answer must be lower than 400")
+                    user_answer = str(input(question))
                 elif answer <= 2500 and user_answer >= 2026 :
                     print("Your answer must be lower than 2026")
+                    user_answer = str(input(question))
+                elif answer >= 2000 and user_answer < 1991 :
+                    print("Your answer must be bigger than 1990")
                     user_answer = str(input(question))
                 elif int(user_answer) == answer :
                         print("correct")
                         score += 1
                         work = "yes"
+                else:
                     work = "yes"
             except :
-                print("Your answer must be a number")
+                if type(user_answer) == float :
+                    print("Your answer must not include decimals.")
+                else:
+                    print("Your answer must be a number")
                 user_answer = str(input(question))
 
 
@@ -91,7 +101,7 @@ for question, answer in qanda.items():
 print("You have finished the quiz. Well Done!")
 print(f"Your score is {score}/10")
 
-skill = ""
+
 
 if score > 8 :
     skill = "excellent"
