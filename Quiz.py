@@ -31,6 +31,8 @@ qanda = {"How many Oympic gold medals has Lisa Carrington won?\n" : 8,
 # has gotten right.
 score = 0
 
+# This created lists to show the only correct answers that will be 
+# accepted for multi choice and true or false questions.
 trueorfalse = ["true", "false"]
 multichoice = ["a", "b", "c", "d"]
 
@@ -62,7 +64,7 @@ for question, answer in qanda.items():
             try :
                 
                 # This tests the user's answer to make sure their 
-                # answer's are not too large or small.
+                # answers are not too large or small.
                 user_answer = int(user_answer)
                 if user_answer <= 0 :
                     print("Your number must be bigger than 0")
@@ -91,6 +93,8 @@ for question, answer in qanda.items():
                 else:
                     work = "yes"
             except :
+                
+                # This tests if the user's answer is a float.
                 try :
                     float(user_answer)
                     print("Your answer must not contain decimals.")
