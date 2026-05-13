@@ -76,8 +76,8 @@ for question, answer in qanda.items():
                 elif answer <= 200 and user_answer > 350 :
                     print("Your answer must be lower than 400")
                     user_answer = str(input(question))
-                elif answer <= 200 and user_answer > 350 :
-                    print("Your answer must be lower than 400")
+                elif answer >= 100 and user_answer < 100 :
+                    print("Your answer must be bigger than 100")
                     user_answer = str(input(question))
                 elif answer <= 2500 and user_answer >= 2026 :
                     print("Your answer must be lower than 2026")
